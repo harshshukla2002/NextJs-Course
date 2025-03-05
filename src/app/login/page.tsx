@@ -75,46 +75,65 @@ const LoginPage = () => {
   }, [user]);
 
   return (
-    <Card className="w-[28%] m-auto mt-[10%] rounded-sm">
-      <CardHeader>
-        <CardTitle className="text-center text-2xl">Login</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form className="flex flex-col" onSubmit={onLogin}>
-          <div className="flex flex-col gap-1 my-2">
-            <Label htmlFor="username">Email</Label>
-            <Input
-              type="email"
-              placeholder="enter email"
-              value={user.email}
-              name="email"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-1 my-2">
-            <Label htmlFor="username">Password</Label>
-            <Input
-              type="password"
-              placeholder="enter password"
-              value={user.password}
-              name="password"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <br />
-          <Button type="submit" className="cursor-pointer" disabled={disabled}>
-            {loading ? "Loading..." : "Login"}
-          </Button>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Link className={buttonVariants({ variant: "link" })} href={"/signup"}>
-          Visit Signup here
-        </Link>
-      </CardFooter>
-    </Card>
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm">
+        <Card className="rounded-sm">
+          <CardHeader>
+            <CardTitle className="text-center text-2xl">Login</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form className="flex flex-col" onSubmit={onLogin}>
+              <div className="flex flex-col gap-1 my-2">
+                <Label htmlFor="username">Email</Label>
+                <Input
+                  type="email"
+                  placeholder="enter email"
+                  value={user.email}
+                  name="email"
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <div className="flex flex-col gap-1 my-2">
+                <Label htmlFor="username">Password</Label>
+                <Input
+                  type="password"
+                  placeholder="enter password"
+                  value={user.password}
+                  name="password"
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <br />
+              <Button
+                type="submit"
+                className="cursor-pointer"
+                disabled={disabled}
+              >
+                {loading ? "Loading..." : "Login"}
+              </Button>
+            </form>
+          </CardContent>
+          <CardFooter>
+            <Link
+              className={`${buttonVariants({
+                variant: "link",
+              })} text-right text-blue-500`}
+              href={"/forgetpassword"}
+            >
+              forget password?
+            </Link>
+            <Link
+              className={buttonVariants({ variant: "link" })}
+              href={"/signup"}
+            >
+              Visit Signup here
+            </Link>
+          </CardFooter>
+        </Card>
+      </div>
+    </div>
   );
 };
 

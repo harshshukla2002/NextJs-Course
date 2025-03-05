@@ -82,57 +82,68 @@ const SignupPage = () => {
   }, [user]);
 
   return (
-    <Card className="w-[28%] m-auto mt-[10%] rounded-sm">
-      <CardHeader>
-        <CardTitle className="text-center text-2xl">Signup</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form className="flex flex-col" onSubmit={onSignup}>
-          <div className="flex flex-col gap-1 my-2">
-            <Label htmlFor="username">Username</Label>
-            <Input
-              type="text"
-              placeholder="enter username"
-              value={user.username}
-              name="username"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-1 my-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              placeholder="enter email"
-              value={user.email}
-              name="email"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-1 my-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              placeholder="enter password"
-              value={user.password}
-              name="password"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <br />
-          <Button type="submit" className="cursor-pointer" disabled={disabled}>
-            {loading ? "Loading..." : "Signup"}
-          </Button>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Link className={buttonVariants({ variant: "link" })} href={"/login"}>
-          Visit Login here
-        </Link>
-      </CardFooter>
-    </Card>
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm">
+        <Card className="rounded-sm">
+          <CardHeader>
+            <CardTitle className="text-center text-2xl">Signup</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form className="flex flex-col" onSubmit={onSignup}>
+              <div className="flex flex-col gap-1 my-2">
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  type="text"
+                  placeholder="enter username"
+                  value={user.username}
+                  name="username"
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <div className="flex flex-col gap-1 my-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  type="email"
+                  placeholder="enter email"
+                  value={user.email}
+                  name="email"
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <div className="flex flex-col gap-1 my-2">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  type="password"
+                  placeholder="enter password"
+                  value={user.password}
+                  name="password"
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <br />
+              <Button
+                type="submit"
+                className="cursor-pointer"
+                disabled={disabled}
+              >
+                {loading ? "Loading..." : "Signup"}
+              </Button>
+            </form>
+          </CardContent>
+          <CardFooter>
+            <Link
+              className={buttonVariants({ variant: "link" })}
+              href={"/login"}
+            >
+              Visit Login here
+            </Link>
+          </CardFooter>
+        </Card>
+      </div>
+    </div>
   );
 };
 
