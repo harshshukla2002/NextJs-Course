@@ -15,7 +15,7 @@ This is a full-stack authentication system built with Next.js, using `shadcn/ui`
 - **Frontend:** Next.js, Tailwind CSS, shadcn/ui
 - **Backend:** Next.js API routes
 - **Database:** MongoDB
-- **Email Service:** Nodemailer
+- **Email Service:** Nodemailer (Mailtrap for testing)
 
 ## Installation
 
@@ -42,9 +42,24 @@ TOKEN_SECRET = authnextjs
 DOMAIN = http://localhost:3000
 ```
 
-> **Note:** If using Gmail, you may need to enable "Less Secure Apps" or use an app password.
+### 4. Configure Email Transporter
 
-### 4. Run the development server
+Update the `src/helpers/mailer.ts` file with the following Mailtrap configuration:
+
+```ts
+const transport = nodemailer.createTransport({
+  host: "sandbox.smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: "your name",
+    pass: "your password",
+  },
+});
+```
+
+> **Note:** Mailtrap is used for testing emails. Use actual SMTP credentials in production.
+
+### 5. Run the development server
 
 ```sh
 npm run dev
@@ -55,7 +70,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the app.
 ## API Routes
 
 - **POST** `/api/users/signup` - Register a new user
-- **POST** `/api/users/login` - Usersenticate user
+- **POST** `/api/users/login` - Authenticate user
 - **POST** `/api/users/verifyemail` - Verify email
 - **POST** `/api/users/forgotpassword` - Send password reset email
 - **POST** `/api/users/verifypassword` - Reset password
@@ -83,6 +98,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the app.
  │   │   ├── verifypassword.tsx     # Password Reset Confirmation Page
  │   │   ├── profile.tsx            # User Profile Page
  │   ├── /helpers                   # Utility functions
+ │   │   ├── mailer.ts               # Email transport configuration
  │   ├── /models                    # Database models
  │   ├── middleware.ts               # Authentication middleware
  ├── .env.local                      # Environment Variables
