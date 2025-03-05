@@ -26,7 +26,7 @@ const ForgetPassword = () => {
       setEmail(null);
       router.push("/login");
     } catch (error: any) {
-      console.log(error?.response?.data?.message || error);
+      console.error(error?.response?.data?.message || error);
       toast.error(
         error?.response?.data?.message ||
           "something went wrong on sending forget password"

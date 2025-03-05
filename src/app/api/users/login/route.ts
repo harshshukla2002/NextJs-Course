@@ -45,7 +45,7 @@ export const POST = async (request: NextRequest) => {
     return response;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    console.log("error on login", error);
+    console.error("error on login", error);
     return NextResponse.json(
       { error: error.message, success: false, message: "error on login" },
       { status: 500 }
